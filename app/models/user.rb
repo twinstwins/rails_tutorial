@@ -68,10 +68,13 @@ private
    end
 
    # 有効化トークンとダイジェストを作成および代入する
+   # createアクションが実行される前に実行されるアクション(コールバックを使う)
+   # User.new_tokenは、ランダムなトークンを返すUserクラスで定義されたアクション
+   # User.digestは、string型の引数として受け取り、hash化(暗号化)された文字列を返すアクション
    def create_activation_digest
      self.activation_token  = User.new_token
      self.activation_digest = User.digest(activation_token)
    end
 
 
-   end
+end

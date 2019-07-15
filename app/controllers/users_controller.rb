@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+  #  @user = User.find(params[:id]) @userは、current_userで定義されたので不要
     if @user.update_attributes(user_params)
       # 更新に成功した場合を扱う。
       flash[:success] = "Profile updated"
@@ -54,8 +54,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end
-
-
     # beforeアクション
 
     # ログイン済みユーザーかどうか確認
